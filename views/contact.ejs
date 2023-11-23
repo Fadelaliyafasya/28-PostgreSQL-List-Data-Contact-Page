@@ -1,0 +1,64 @@
+<div class="container text-center">
+  <h1>Daftar Kontak</h1>
+
+  <br />
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <% if (message.length !== 0) { %>
+      <div
+        class="alert alert-success alert-gradient shadow p-3 mb-5"
+        role="alert"
+      >
+        <%= message %>
+      </div>
+      <% } %>
+      <table
+        class="table table-striped table-hover shadow p-3 mb-5 bg-body rounded"
+      >
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Nomor Handphone</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Iterasi melalui daftar kontak menggunakan forEach -->
+          <% contacts.forEach((contact, index) => { index++ %>
+          <tr>
+            <th scope="row"><%= index++ %></th>
+            <td><%= contact.nama %></td>
+            <td><%= contact.nomorhp %></td>
+            <td>
+              <a
+                href="/contact/<%= contact.nama %>"
+                class="btn btn-success badge shadow rounded-pill mt-1 mb-1"
+                ><i class="bi bil-info-circle"></i>detail</a
+              >
+
+              <a
+                href="/contact/delete/<%= contact.nama %>"
+                class="btn btn-danger btn-gradient shadow badge mt-1 mb-1 rounded-pill"
+                onclick="return confirm('Anda yakin ingin menghapus data?')"
+                >Hapus Data</a
+              >
+
+              <a
+                href="/contact/update/<%= contact.nama %>"
+                class="btn btn-primary btn-gradient shadow mt-1 mb-1 badge rounded-pill"
+                >Update Data</a
+              >
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <a
+        href="/contact/add"
+        class="btn btn-success btn-gradient mb-2 shadow p-2"
+        >Tambah data kontak</a
+      >
+    </div>
+  </div>
+</div>
